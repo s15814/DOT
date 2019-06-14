@@ -1,0 +1,27 @@
+﻿@model BoardGameApp.Models.BoardGame
+@{
+    ViewBag.Title = "Add BoardGame";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Dodaj gre planszową</h2>
+
+@using (Html.BeginForm("add", "BoardGame"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Publisher)
+        @Html.TextBoxFor(m => m.Publisher, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Players)
+        @Html.TextBoxFor(m => m.Players, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Playtime)
+        @Html.TextBoxFor(m => m.Playtime, new { @class = "form-control" })
+    </div>
+}
