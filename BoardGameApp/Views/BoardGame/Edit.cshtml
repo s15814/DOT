@@ -1,0 +1,34 @@
+﻿@model BoardGameApp.Models.BoardGame
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edytuj</h2>
+@using (Html.BeginForm("Update", "BoardGame"))
+{
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(m => m.Title, new {@class = "form-control", @maxlength = "255"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Publisher)
+        @Html.TextBoxFor(m => m.Publisher, new {@class = "form-control", @maxlength = "255"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Players)
+        @Html.TextBoxFor(m => m.Players, new {@class = "form-control", @maxlength = "13"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Playtime)
+        @Html.TextBoxFor(m => m.Playtime, new {@class = "form-control", @maxlength = "13"})
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Description)
+        @Html.TextAreaFor(m => m.Description, new {@class = "form-control", @maxlength = "500"})
+    </div>
+    <button type="submit" class="btn btn-primary">Save <span class="glyphicon glyphicon-floppy-disk"></span></button>
+}
+

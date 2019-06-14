@@ -10,10 +10,12 @@ namespace BoardGameApp.Models
     {
         [Required]
         [StringLength(255)]
+        [Display(Name = "Tytuł")]
         public string Title { get; set; }
 
         [Required]
         [StringLength(255)]
+        [Display(Name = "Wydawca")]
         public string Publisher { get; set; }
 
         [Required]
@@ -24,5 +26,9 @@ namespace BoardGameApp.Models
         [Required]
         [Display(Name = "Czas gry")]
         public int Playtime { get; set; }
+
+        [Required]
+        [StringLength(500)]
+        public string Description { get; set; }
     }
 }

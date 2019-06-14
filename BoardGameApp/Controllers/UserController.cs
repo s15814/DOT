@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace BoardGameApp.Controllers
 {
-    [RoutePrefix("user")]
+    [RoutePrefix("User")]
     public class UserController : BaseController
     {
         // GET: User

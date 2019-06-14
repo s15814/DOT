@@ -1,6 +1,14 @@
 ﻿@model BoardGameApp.Models.BoardGame
 @{
-    ViewBag.Title = "BoardGame Details";
+    ViewBag.Title = "Board Game Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1>Informacje o grze</h1>
+
+<h2>@Model.Title</h2>
+<br/>
+<p>Publisher: @Model.Publisher</p>
+<p>Liczba graczy: @Model.Players</p>
+<p>Czas trwania gry: @Model.Playtime</p>
+<p>Description: @Model.Description</p>
+
+<button class="btn btn-default">@Html.ActionLink("Back", "List", "BoardGame")</button>

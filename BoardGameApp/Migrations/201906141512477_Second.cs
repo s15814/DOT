@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class Second : DbMigration
     {
         public override void Up()
         {
@@ -27,6 +27,7 @@
                         Publisher = c.String(nullable: false, maxLength: 255),
                         Players = c.String(nullable: false, maxLength: 70),
                         Playtime = c.Int(nullable: false),
+                        Description = c.String(nullable: false, maxLength: 500),
                     })
                 .PrimaryKey(t => t.Id);
             
