@@ -14,7 +14,7 @@
 <p>Dostępna ilość: @Model.Amount</p>
 @if (Request.IsAuthenticated && Model.Amount > 0)
 {
-    @Html.ActionLink("Zarezerwuj", "Order/" + Model.Id, "BoardGame", new { @class = "btn btn-primary" })
+    @Html.ActionLink("Zarezerwuj", "Order/" + Model.Id, "BoardGame", new { @class = "btn btn-primary", @type= "submit" })
     <br /><br /><br />
 }
-@Html.ActionLink("Wstecz", "List", "BoardGame", new { @class = "btn btn-default" })
+@Html.ActionLink("Cofnij", "List", "BoardGame", new { @class = "btn btn-default", @type= "submit" })
