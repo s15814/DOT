@@ -26,14 +26,17 @@
                     <td>@boardGame.Title</td>
                     <td>
                         <button class="btn btn-default">
-                            @Html.ActionLink("Show details", "Details/" + boardGame.Id, "BoardGame")
+                            @Html.ActionLink("Szczegóły", "Details/" + boardGame.Id, "BoardGame")
+                        </button>
+                    @if (User.IsInRole(BoardGameApp.Models.Notifications.ROLE_EMPLOYEE))
+                    {
+                        <button class="btn btn-default">
+                            @Html.ActionLink("Edytuj", "Edit/" + boardGame.Id, "BoardGame")
                         </button>
                         <button class="btn btn-default">
-                            @Html.ActionLink("Edit", "Edit/" + boardGame.Id, "BoardGame")
+                            @Html.ActionLink("Usuń", "Remove/" + boardGame.Id, "BoardGame")
                         </button>
-                        <button class="btn btn-default">
-                            @Html.ActionLink("Remove", "Remove/" + boardGame.Id, "BoardGame")
-                        </button>
+                    }
                     </td>
                 </tr>
             }

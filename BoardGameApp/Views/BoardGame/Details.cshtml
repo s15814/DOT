@@ -5,10 +5,16 @@
 }
 
 <h2>@Model.Title</h2>
-<br/>
-<p>Publisher: @Model.Publisher</p>
+<br />
+<p>Wydawca: @Model.Publisher</p>
 <p>Liczba graczy: @Model.Players</p>
 <p>Czas trwania gry: @Model.Playtime</p>
-<p>Description: @Model.Description</p>
+<p>Opis: @Model.Description</p>
 
-<button class="btn btn-default">@Html.ActionLink("Back", "List", "BoardGame")</button>
+<p>Dostępna ilość: @Model.Amount</p>
+@if (Request.IsAuthenticated && Model.Amount > 0)
+{
+    @Html.ActionLink("Zarezerwuj", "Order/" + Model.Id, "BoardGame", new { @class = "btn btn-primary" })
+    <br /><br /><br />
+}
+@Html.ActionLink("Wstecz", "List", "BoardGame", new { @class = "btn btn-default" })

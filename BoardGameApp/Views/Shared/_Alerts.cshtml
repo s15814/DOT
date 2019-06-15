@@ -1,0 +1,23 @@
+﻿@if (null != TempData[BoardGameApp.Models.Notifications.MESSAGE_SUCCESS])
+{
+    <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Sukces!</strong> @TempData[BoardGameApp.Models.Notifications.MESSAGE_SUCCESS]
+    </div>
+}
+
+@if (null != TempData[BoardGameApp.Models.Notifications.MESSAGE_INFO])
+{
+    <div class="alert alert-info">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Info!</strong> @TempData[BoardGameApp.Models.Notifications.MESSAGE_INFO]
+    </div>
+}
+
+@if (null != TempData[BoardGameApp.Models.Notifications.MESSAGE_ALERT])
+{
+    <div class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Uwaga!</strong> @TempData[BoardGameApp.Models.Notifications.MESSAGE_ALERT]
+    </div>
+}

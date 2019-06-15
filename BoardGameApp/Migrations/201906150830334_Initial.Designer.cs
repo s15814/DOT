@@ -7,13 +7,13 @@ namespace BoardGameApp.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.3.0-preview6-19304-03")]
-    public sealed partial class Second : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Second));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201906141512477_Second"; }
+            get { return "201906150830334_Initial"; }
         }
         
         string IMigrationMetadata.Source

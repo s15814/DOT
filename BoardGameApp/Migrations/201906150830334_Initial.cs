@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Second : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -12,11 +12,14 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        BoardGameId = c.Byte(nullable: false),
-                        LocationId = c.Byte(nullable: false),
-                        Amount = c.Int(nullable: false),
+                        ClientRefId = c.String(maxLength: 128),
+                        BoardGameRefId = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.BoardGames", t => t.BoardGameRefId, cascadeDelete: true)
+                .ForeignKey("dbo.Clients", t => t.ClientRefId)
+                .Index(t => t.ClientRefId)
+                .Index(t => t.BoardGameRefId);
             
             CreateTable(
                 "dbo.BoardGames",
@@ -25,23 +28,20 @@
                         Id = c.Int(nullable: false, identity: true),
                         Title = c.String(nullable: false, maxLength: 255),
                         Publisher = c.String(nullable: false, maxLength: 255),
-                        Players = c.String(nullable: false, maxLength: 70),
-                        Playtime = c.Int(nullable: false),
+                        Players = c.String(nullable: false, maxLength: 255),
+                        Playtime = c.String(nullable: false, maxLength: 3),
                         Description = c.String(nullable: false, maxLength: 500),
+                        Amount = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Locations",
+                "dbo.Clients",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false),
-                        Street = c.String(nullable: false),
-                        City = c.String(nullable: false),
-                        PostalCode = c.String(nullable: false),
-                        HouseNumber = c.String(nullable: false),
-                        ApartmentNumber = c.String(),
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Name = c.String(nullable: false, maxLength: 70),
+                        Surname = c.String(nullable: false, maxLength: 70),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -121,18 +121,22 @@
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.BoardGameCopies", "ClientRefId", "dbo.Clients");
+            DropForeignKey("dbo.BoardGameCopies", "BoardGameRefId", "dbo.BoardGames");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.BoardGameCopies", new[] { "BoardGameRefId" });
+            DropIndex("dbo.BoardGameCopies", new[] { "ClientRefId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Locations");
+            DropTable("dbo.Clients");
             DropTable("dbo.BoardGames");
             DropTable("dbo.BoardGameCopies");
         }

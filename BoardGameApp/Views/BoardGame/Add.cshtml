@@ -6,27 +6,41 @@
 
 <h2>Dodaj gre planszową</h2>
 
-@using (Html.BeginForm("Add", "BoardGame"))
+@using (Html.BeginForm("Save", "BoardGame", FormMethod.Post))
 {
+    @Html.ValidationSummary(true, "Proszę poprawić wszystkie poniższe błędy.")
     <div class="form-group">
         @Html.LabelFor(m => m.Title)
         @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Title)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Publisher)
         @Html.TextBoxFor(m => m.Publisher, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Publisher)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Players)
         @Html.TextBoxFor(m => m.Players, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Players)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Playtime)
         @Html.TextBoxFor(m => m.Playtime, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Playtime)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Description)
         @Html.TextAreaFor(m => m.Description, new { @class = "form-control", @maxlength = "500" })
+        @Html.ValidationMessageFor(m => m.Description)
     </div>
-    <button type="submit" class="btn btn-primary">Save</button>
+    <div class="form-group">
+        <div class="form-inline">
+            @Html.LabelFor(m => m.Amount)
+        </div>
+        @Html.TextBoxFor(m => m.Amount, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Amount)
+    </div>
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Dodaj</button>
 }

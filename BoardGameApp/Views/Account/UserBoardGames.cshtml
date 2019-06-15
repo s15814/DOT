@@ -1,0 +1,28 @@
+﻿@model BoardGameApp.Models.ViewBoardGamesModel
+@{
+    ViewBag.Title = "UserBoardGames";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Twoje rezerwacje</h2>
+@if (Model.BoardGames != null && Model.BoardGames.Count != 0)
+{
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Publisher</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var boardGame in Model.BoardGames)
+        {
+            <tr>
+                <td>@boardGame.Title</td>
+                <td>@boardGame.Publisher</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+@Html.ActionLink("Back", "Details", "Account", new {@class = "btn btn-default" })

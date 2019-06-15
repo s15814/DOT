@@ -1,0 +1,27 @@
+﻿@model BoardGameApp.Models.LoginViewModel
+@{
+    /**/
+
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Logowanie</h2>
+
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "Login lub hasło są niepoprawne.")
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password)
+        @Html.TextBoxFor(m => m.Password, new { @class = "form-control", @type = "password" })
+        @Html.ValidationMessageFor(m => m.Password)
+    </div>
+    @Html.AntiForgeryToken()
+    <br />
+    <button type="submit" class="btn btn-success">Zaloguj</button>
+}

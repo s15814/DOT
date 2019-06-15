@@ -3,5 +3,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h1>Gry</h1>
-<button class="btn btn-default">@Html.ActionLink("Dodaj grę", "Add", "BoardGame")</button>
-<button class="btn btn-default">@Html.ActionLink("Lista gier", "List", "BoardGame")</button>
+@if (User.IsInRole(BoardGameApp.Models.Notifications.ROLE_EMPLOYEE))
+{
+    <button class="btn btn-default">@Html.ActionLink("Dodaj grę", "Add", "BoardGame")</button>
+}
+    <button class="btn btn-default">@Html.ActionLink("Lista gier", "List", "BoardGame")</button>

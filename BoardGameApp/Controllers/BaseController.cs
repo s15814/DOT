@@ -20,5 +20,21 @@ namespace BoardGameApp.Controllers
         {
             _context.Dispose();
         }
+
+        protected void Info(string info)
+        {
+            @TempData[Notifications.MESSAGE_INFO] = info;
+
+        }
+
+        protected void Alert(string alert)
+        {
+            @TempData[Notifications.MESSAGE_ALERT] = alert;
+        }
+
+        protected void Success(string success)
+        {
+            @TempData[Notifications.MESSAGE_SUCCESS] = success;
+        }
     }
 }
