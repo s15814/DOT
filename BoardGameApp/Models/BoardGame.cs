@@ -22,11 +22,13 @@ namespace BoardGameApp.Models
 
         [Required(ErrorMessage = (Notifications.REQ + "gry"))]
         [StringLength(255, ErrorMessage = Notifications.MAX_LEN)]
+        [RegularExpression("^([1-9]|10|11)-([1-9]|10|11|12|13|14|15|16)$|^([0-9]|10|11|12|13|14|15|16)$", ErrorMessage = Notifications.RANGE)]
         [Display(Name = "Liczba graczy")]
         public string Players { get; set; }
 
         [Required(ErrorMessage = (Notifications.REQ + "gry"))]
         [StringLength(3, ErrorMessage = Notifications.MAX_LEN)]
+        [RegularExpression("([0-9]+)", ErrorMessage = Notifications.NUMERIC)]
         [Display(Name = "Czas gry")]
         public string Playtime { get; set; }
 

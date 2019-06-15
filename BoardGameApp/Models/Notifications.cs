@@ -10,6 +10,7 @@ namespace BoardGameApp.Models
         public const string MAX_LEN = "Maksymalna długość {0} to {1}";
         public const string REQ = "Należy wypełnić pole {0}";
         public const string NUMERIC = "{0} musi być cyfrą";
+        public const string RANGE = "{0} musi być przedziałem od 1 do 16 zapisanym z myślnikiem, lub liczbą od 1 do 16.";
         public const string MESSAGE_SUCCESS = "messageSuccess";
         public const string MESSAGE_ALERT = "messageAlert";
         public const string MESSAGE_INFO = "messageInfo";
